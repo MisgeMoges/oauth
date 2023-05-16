@@ -1,6 +1,5 @@
-// models/User.js
-
-import mongoose from "mongoose"
+const mongoose =  require("mongoose");
+const validator = require("validator");
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -15,6 +14,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+    validate: [validator.isEmail, "Invalid email address"],
   },
   password: {
     type: String,
@@ -23,7 +23,14 @@ const userSchema = new mongoose.Schema({
   phoneNumber: {
     type: String,
     required: true,
+    validate: {
+      validator: function (value) {
+        return validator.isMobilePhone(value, "en-US");
+      },
+      message: "Invalid phone number",
+    },
   },
 });
 
-export default mongoose.model("User", userSchema);
+const User =  mongoose.model("User", userSchema);
+module.exports = User

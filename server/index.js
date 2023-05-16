@@ -6,8 +6,11 @@ const passportSetup = require("./passport");
 const passport = require("passport");
 const authRoute = require("./routes/auth");
 const session = require("express-session");
+const mongoose = require("mongoose")
 
 const app = express();
+
+
 
 // app.use(
 //   cookieSession({ name: "session", keys: ["lama"], maxAge: 24 * 60 * 60 * 100 })
@@ -98,26 +101,26 @@ app.listen("5000", () => {
 // });
 
 
-// // // Middlewares
-// // app.use(json());
-// // app.use(cookieParser());
-// // app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+// // Middlewares
+// app.use(json());
+// app.use(cookieParser());
+// app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
-// // // Connect to MongoDB
-// // connect(process.env.MONGODB_URI, {
-// //   useNewUrlParser: true,
-// //   useUnifiedTopology: true,
-// // });
+// // Connect to MongoDB
+// connect(process.env.MONGODB_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 
 
-// // // Load routes
-// // import authRoutes from "./routes/authRoutes";
+// // Load routes
+// import authRoutes from "./routes/authRoutes";
 
-// // // Use routes
-// // app.use("/api/auth", authRoutes);
+// // Use routes
+// app.use("/api/auth", authRoutes);
 
-// // // Start server
-// // app.listen(process.env.PORT || 5000, () => {
-// //   console.log(`Server is running on port ${process.env.PORT || 5000}`);
-// // });
+// // Start server
+// app.listen(process.env.PORT || 5000, () => {
+//   console.log(`Server is running on port ${process.env.PORT || 5000}`);
+// });
